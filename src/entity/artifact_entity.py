@@ -16,6 +16,7 @@ class DataIngestionArtifact:  # #Used to store paths to datasets split during in
     trained_file_path:str 
     test_file_path:str
 
+'''
    
 #Captures the results of data validation
 @dataclass
@@ -61,7 +62,7 @@ class ModelPusherArtifact:
 
 
 
-    '''
+
 
      ┌──────────────────────────────┐
  │      Data Ingestion          │

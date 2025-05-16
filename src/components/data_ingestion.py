@@ -11,16 +11,6 @@ from src.logger import logging
 from src.data_access.proj1_data import Proj1Data
 
 class DataIngestion:
-
-    '''
-    The DataIngestion class is responsible for:
-    Pulling data from MongoDB
-    Saving it locally (as CSV)
-    Splitting it into train and test sets
-    Returning file paths as a DataIngestionArtifact
-    
-    
-    '''
     def __init__(self,data_ingestion_config:DataIngestionConfig=DataIngestionConfig()):
         """
         :param data_ingestion_config: configuration for data ingestion
@@ -44,12 +34,15 @@ class DataIngestion:
             my_data = Proj1Data()
             dataframe = my_data.export_collection_as_dataframe(collection_name=
                                                                    self.data_ingestion_config.collection_name)
+    
             logging.info(f"Shape of dataframe: {dataframe.shape}")
+            logging.info(f"First few rows of dataframe:\n{dataframe.head()}")
+
             feature_store_file_path  = self.data_ingestion_config.feature_store_file_path
             dir_path = os.path.dirname(feature_store_file_path)
             os.makedirs(dir_path,exist_ok=True)
             logging.info(f"Saving exported data into feature store file path: {feature_store_file_path}")
-            dataframe.to_csv(feature_store_file_path,index=False,header=True) #Saves it to a defined CSV file path (feature_store_file_path)
+            dataframe.to_csv(feature_store_file_path,index=False,header=True)
             return dataframe
 
         except Exception as e:
@@ -112,15 +105,3 @@ class DataIngestion:
             return data_ingestion_artifact
         except Exception as e:
             raise MyException(e, sys) from e
-        
-
-
-'''
-🧠 Summary (Core Idea)
-Step	                                What It Does	                            Output
-__init__	                            Load configs from entity	                Config loaded
-export_data_into_feature_store()	    Pull data from MongoDB and save to CSV	    feature_store_file_path
-split_data_as_train_test()	            Split data and save train/test CSVs	        training_file_path, testing_file_path
-initiate_data_ingestion()	            Calls above methods, returns artifact	    DataIngestionArtifact
-
-'''
