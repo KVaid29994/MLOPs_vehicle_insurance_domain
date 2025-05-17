@@ -16,7 +16,7 @@ class DataIngestionArtifact:  # #Used to store paths to datasets split during in
     trained_file_path:str 
     test_file_path:str
 
-'''
+
    
 #Captures the results of data validation
 @dataclass
@@ -25,7 +25,7 @@ class DataValidationArtifact:
     message: str                # Summary or error message
     validation_report_file_path: str     # File path to validation report
 
-
+'''
 #Holds paths after data transformation (e.g., encoding, scaling):
 @dataclass
 class DataTransformationArtifact:
