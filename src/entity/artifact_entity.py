@@ -25,7 +25,7 @@ class DataValidationArtifact:
     message: str                # Summary or error message
     validation_report_file_path: str     # File path to validation report
 
-'''
+
 #Holds paths after data transformation (e.g., encoding, scaling):
 @dataclass
 class DataTransformationArtifact:
@@ -33,20 +33,24 @@ class DataTransformationArtifact:
     transformed_train_file_path:str   # Path to transformed training data
     transformed_test_file_path:str    # Path to transformed test data
 
-
-#Stores evaluation metrics from model performance:
 @dataclass
 class ClassificationMetricArtifact:
     f1_score:float
     precision_score:float
     recall_score:float
 
-
 #Represents output of model training
+
 @dataclass
 class ModelTrainerArtifact:
     trained_model_file_path:str   # Path to saved model
     metric_artifact:ClassificationMetricArtifact  #  # Embedded evaluation metrics
+
+'''
+#Stores evaluation metrics from model performance:
+
+
+
 
 @dataclass
 class ModelEvaluationArtifact:
