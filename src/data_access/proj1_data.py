@@ -7,7 +7,7 @@ from src.configuration.mongo_db_connection import MongoDBClient
 from src.constants import DATABASE_NAME
 from src.exception import MyException
 
-class Proj1Data:
+class Proj1data:
     """
     A class to export MongoDB records as a pandas DataFrame.
     """
@@ -47,9 +47,9 @@ class Proj1Data:
             # Convert collection data to DataFrame and preprocess
             print("Fetching data from mongoDB")
             df = pd.DataFrame(list(collection.find()))
-            print(f"Data fecthed with len: {len(df)}")
-            if "id" in df.columns.to_list():
-                df = df.drop(columns=["id"], axis=1)
+            print(f"Data fetched with len: {len(df)}")
+            if "_id" in df.columns.to_list():
+                df = df.drop(columns=["_id"], axis=1)
             df.replace({"na":np.nan},inplace=True)
             return df
 
