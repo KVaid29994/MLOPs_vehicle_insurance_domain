@@ -46,10 +46,6 @@ class ModelTrainerArtifact:
     trained_model_file_path:str   # Path to saved model
     metric_artifact:ClassificationMetricArtifact  #  # Embedded evaluation metrics
 
-'''
-#Stores evaluation metrics from model performance:
-
-
 
 
 @dataclass
@@ -65,8 +61,7 @@ class ModelPusherArtifact:
     s3_model_path:str
 
 
-
-
+'''
 
      ┌──────────────────────────────┐
  │      Data Ingestion          │
