@@ -34,3 +34,49 @@ TOML is becoming the standard for Python packaging metadata.
 
 When you run pip install -r requirements.txt, it ensures that all dependencies are installed. The pyproject.toml file can reference 
 it (as we did) so that package dependencies are automatically pulled from thereconda
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Cross-Origin Resource Sharing (CORS)
+
+Original: Allow all origins for Cross-Origin Resource Sharing (CORS) Configure middleware to handle CORS, allowing requests 
+from any origin.
+
+Simplified: When you load a web app (e.g., from http://localhost:3000) and it tries to access a server (e.g., http://localhost:8000), 
+CORS controls whether the browser allows this connection. By default, browsers block requests from one 
+"origin" (like a domain or port) to another for security reasons.
+
+In this code, allow_origins=["*"] is set, which means allow all origins (any domain or app can connect). The middleware 
+is added so that your FastAPI app accepts requests from any origin, making it easier for you to access the API from anywhere, 
+such as different frontend apps.
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+**Original:** > async
+
+Simplified: `async` (short for *asynchronous*) allows your code to run tasks without waiting for each to finish one by one. 
+
+For example, imagine you request some data from a user form on a website. While waiting for the data to be sent back, instead 
+of sitting idle, the app can do other tasks (like handling another user's request) in the meantime.
+
+Using `async` helps the app handle multiple requests faster and more efficiently, especially for tasks like reading form data, 
+accessing databases, or making network requests. 
+
+In our code:
+----------------------------------
+async def get_vehicle_data(self):
+    form = await self.request.form()
+    # fetch form data here
+----------------------------------
+
+This means `get_vehicle_data` won’t block the app. The `await` keyword tells Python to pause this function temporarily while it waits 
+for data but allows the app to keep working on other tasks.
+
+In short:
+- **`async`** lets the function run without waiting.
+- **`await`** pauses the function only when necessary, allowing other parts of the app to keep running smoothly.
+
+------------------------------------------------------------------------------------------------------------------------------------
